@@ -13,5 +13,15 @@ export class NavBarComponent {
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
+
+  toggleTheme() {
+  const html = document.documentElement;
+  const theme = html.getAttribute('data-bs-theme');
+
+  html.setAttribute('data-bs-theme', theme === 'dark' ? 'light' : 'dark');
+  document.documentElement.setAttribute('data-theme', 'dark');
+
+}
+
 }
 

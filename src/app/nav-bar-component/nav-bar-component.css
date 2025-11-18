@@ -1,1 +1,21 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f2f2f2;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e6e6e6;
+  --card-bg: #1d1d1d;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.card {
+  background-color: var(--card-bg);
+}

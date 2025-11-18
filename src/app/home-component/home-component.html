@@ -1,1 +1,35 @@
-<p>home-component works!</p>
+<div class="text-center mt-4">
+  <h1 class="display-5 fw-bold">Bem-vindo ao Gerenciador de Contatos</h1>
+  <p class="text-muted">
+    Organize seus contatos e grupos de forma rápida e eficiente.
+  </p>
+</div>
+
+<div class="container mt-5">
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 text-center p-3">
+        <h3>👤 Contatos</h3>
+        <p>Gerencie seus contatos cadastrados.</p>
+        <button class="btn btn-primary" routerLink="/contact">Acessar</button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 text-center p-3">
+        <h3>🏷️ Grupos</h3>
+        <p>Organize seus contatos por grupo.</p>
+        <button class="btn btn-secondary" routerLink="/groups">Acessar</button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 text-center p-3">
+        <h3>➕ Novo Contato</h3>
+        <p>Adicionar um novo contato ao sistema.</p>
+        <button class="btn btn-success" routerLink="/new-contact">Criar</button>
+      </div>
+    </div>
+  </div>
+</div>
