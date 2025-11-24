@@ -6,6 +6,12 @@
       "type": "java",
       "name": "ContactListApplication",
       "request": "launch",
+      "mainClass": "br.com.list.contact.ContactListApplication"
+    },
+    {
+      "type": "java",
+      "name": "ContactListApplication",
+      "request": "launch",
       "mainClass": "br.com.list.contact.services.ContactListApplication",
       "projectName": "contact"
     },

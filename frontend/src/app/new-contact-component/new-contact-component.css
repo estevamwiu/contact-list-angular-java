@@ -38,30 +38,6 @@
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.35);
 }
 
-[data-bs-theme="dark"] .form-wrapper {
-  background: rgba(15, 15, 15, 0.92) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 28px rgba(0, 0, 0, 0.85);
-}
-
-[data-bs-theme="dark"] .form-label {
-  color: #f0f0f0;
-}
-
-[data-bs-theme="dark"] .input-icon i {
-  color: #ccc;
-}
-
-[data-bs-theme="dark"] .enhance {
-  background: #1f1f1f;
-  border: 1px solid #444;
-  color: #eee;
-}
-
-[data-bs-theme="dark"] .enhance:focus {
-  box-shadow: 0 0 15px rgba(0, 150, 255, 0.55);
-}
-
 .no-hover-danger {
   background-color: #dc3545 !important;
   border-color: #dc3545 !important;
@@ -76,4 +52,3 @@
   color: white !important;
   box-shadow: none !important;
 }
-
