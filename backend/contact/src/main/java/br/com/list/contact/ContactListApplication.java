@@ -9,3 +9,4 @@ public class ContactListApplication {
         SpringApplication.run(ContactListApplication.class, args);
     }
 }
+

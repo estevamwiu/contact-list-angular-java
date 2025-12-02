@@ -1,79 +1,83 @@
 package br.com.list.contact.controllers;
 
-import java.net.URI;
-import java.util.List;
+import br.com.list.contact.dtos.ContactDTO;
+import br.com.list.contact.entities.Contact;
+import br.com.list.contact.entities.Group;
+import br.com.list.contact.repositories.GroupRepository;
+import br.com.list.contact.services.ContactService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.list.contact.entities.Contact;
-
-import br.com.list.contact.services.ContactService;
+import java.net.URI;
+import java.util.List;
 
 @RestController
-@RequestMapping("/contacts")
+@RequestMapping("/api/contacts")
 @CrossOrigin(origins = "http://localhost:4200")
-
 public class ContactController {
-    
+
     @Autowired
     private ContactService service;
 
+    @Autowired
+    private GroupRepository groupRepository;
+
     @GetMapping
-    public List <Contact> getContacts() {
-        return service.getContacts();
+    public List<Contact> list() {
+        return service.list();
     }
 
-    @GetMapping ("{id}")
-    public Contact getContactById(@PathVariable long id) {
-        return service.getContactById(id);
-    }
-
-    @DeleteMapping ("{id}")
-    public ResponseEntity <Void> deleteContactById (@PathVariable long id) {
-        service.deleteContactById(id);
-        return ResponseEntity.noContent().build();
+    @GetMapping("{id}")
+    public Contact getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
     @PostMapping
-    public ResponseEntity <Contact> saveContact (@RequestBody Contact contact) {
-        Contact newContact = service.saveContact(contact);
-        
-        URI location = ServletUriComponentsBuilder
-        .fromCurrentRequest()
-        .path("/{id}")
-        .buildAndExpand(newContact.getId())
-        .toUri();
-        
-        return ResponseEntity.created(location).body(newContact);
+    public ResponseEntity<Contact> create(@RequestBody ContactDTO dto) {
+
+        Group group = groupRepository.findById(dto.getGroupId())
+                .orElseThrow(() -> new RuntimeException("Grupo não encontrado"));
+
+        Contact contact = new Contact();
+        contact.setName(dto.getName());
+        contact.setPhone(dto.getPhone());
+        contact.setEmail(dto.getEmail());
+        contact.setAddress(dto.getAddress());
+        contact.setNotes(dto.getNotes());
+        contact.setGroup(group);
+
+        Contact saved = service.save(contact);
+
+        URI location = URI.create("/api/contacts/" + saved.getId());
+        return ResponseEntity.created(location).body(saved);
     }
 
     @PutMapping("{id}")
-    
-    public ResponseEntity<Contact> updateContact(@PathVariable long id, @RequestBody Contact updated) {
-    Contact existing = service.getContactById(id);
+    public ResponseEntity<Contact> update(@PathVariable Long id, @RequestBody ContactDTO dto) {
 
-    existing.setName(updated.getName());
-    existing.setPhone(updated.getPhone());
-    existing.setEmail(updated.getEmail());
-    existing.setGroupName(updated.getGroupName());
-    existing.setAddress(updated.getAddress());
-    existing.setNotes(updated.getNotes());
+        Contact existing = service.getById(id);
 
-    Contact saved = service.saveContact(existing);
-    return ResponseEntity.ok(saved);
-}
+        Group group = groupRepository.findById(dto.getGroupId())
+                .orElseThrow(() -> new RuntimeException("Grupo não encontrado"));
+
+        existing.setName(dto.getName());
+        existing.setPhone(dto.getPhone());
+        existing.setEmail(dto.getEmail());
+        existing.setAddress(dto.getAddress());
+        existing.setNotes(dto.getNotes());
+        existing.setGroup(group);
+
+        Contact updated = service.save(existing);
+
+        return ResponseEntity.ok(updated);
+    }
 
 
-
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

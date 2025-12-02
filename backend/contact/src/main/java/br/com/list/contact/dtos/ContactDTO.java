@@ -1,26 +1,17 @@
-package br.com.list.contact.entities;
+package br.com.list.contact.dtos;
 
-import jakarta.persistence.*;
+public class ContactDTO {
 
-@Entity
-@Table(name = "TBL_CONTACTS")
-public class Contact {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String phone;
     private String email;
     private String address;
     private String notes;
+    private String groupName;
+    private Long groupId;
 
-    @ManyToOne
-    @JoinColumn(name = "group_id")
-    private Group group;
-
-    public Contact() {}
+    public ContactDTO() {}
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -40,6 +31,10 @@ public class Contact {
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
 
-    public Group getGroup() { return group; }
-    public void setGroup(Group group) { this.group = group; }
+    public String getGroupName() { return groupName; }
+    public void setGroupName(String groupName) { this.groupName = groupName; }
+
+    public Long getGroupId() { return groupId; }
+    public void setGroupId(Long groupId) { this.groupId = groupId; }
 }
+

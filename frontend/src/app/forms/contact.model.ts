@@ -1,9 +1,14 @@
 export interface Contact {
-    id?: number;
+  id?: number;
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  notes: string;
+  groupId: number;
+
+  group?: {
+    id: number;
     name: string;
-    phone: string;
-    groupName: string;
-    email: string;
-    address: string;
-    notes: string;
+  };
 }

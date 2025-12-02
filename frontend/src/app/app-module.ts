@@ -11,7 +11,7 @@ import { NewContactComponent } from './new-contact-component/new-contact-compone
 import { GroupsComponent } from './groups-component/groups-component';
 import { NewGroupsComponent } from './new-groups-component/new-groups-component';
 import { ContactComponent } from './contact-component/contact-component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -30,7 +30,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

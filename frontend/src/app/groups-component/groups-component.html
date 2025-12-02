@@ -6,7 +6,7 @@
       Grupos
     </h3>
 
-    <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" routerLink="/new-groups">
+    <button class="btn btn-primary btn-sm d-flex align-items-center gap-2" routerLink="/new-group">
       <i class="bi bi-plus-circle-fill"></i> Novo Grupo
     </button>
   </div>
@@ -18,13 +18,13 @@
         type="text"
         class="form-control enhance"
         placeholder="Pesquisar grupo..."
+        disabled
       />
     </div>
   </div>
 
   <div class="row g-4">
-
-    <div class="col-md-4 col-sm-6">
+    <div class="col-md-4 col-sm-6" *ngFor="let group of groups">
       <div class="group-card p-3 rounded-4 shadow-sm">
         
         <div class="d-flex align-items-center mb-3">
@@ -33,23 +33,26 @@
           </div>
 
           <div class="ms-3">
-            <h6 class="fw-bold mb-1">Família</h6>
-            <span class="text-muted small">5 contatos</span>
+            <h6 class="fw-bold mb-1">{{ group.name }}</h6>
+
+            <span class="text-muted small">ID: {{ group.id }}</span>
+            <br />
+            <span class="text-muted small">Descrição: {{ group.description }}</span>
           </div>
         </div>
 
         <div class="d-flex justify-content-between mt-3">
-          <button class="btn btn-outline-primary btn-sm">
+          <button type="button" class="btn btn-outline-primary btn-sm" (click)="editGroup(group.id!)">
             <i class="bi bi-pencil-square"></i>
           </button>
-          <button class="btn btn-outline-danger btn-sm">
+
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="deleteGroup(group.id!)">
             <i class="bi bi-trash3"></i>
           </button>
         </div>
 
       </div>
     </div>
-
   </div>
 
 </div>

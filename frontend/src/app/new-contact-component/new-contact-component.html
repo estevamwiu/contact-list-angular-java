@@ -7,7 +7,7 @@
 
     <form [formGroup]="formGroupNewContactForm">
       <div class="row g-3">
-        
+
         <div class="col-md-6">
           <label class="form-label">Nome</label>
           <div class="input-icon">
@@ -24,12 +24,14 @@
           </div>
         </div>
 
-        <div class="col-md-6">
-          <label class="form-label">Grupo</label>
-          <div class="input-icon">
-            <i class="bi bi-people"></i>
-            <input type="text" formControlName="groupName" class="form-control enhance">
-          </div>
+        <div class="mb-3">
+          <label for="groupId" class="form-label">Grupo</label>
+          <select id="groupId" class="form-control" formControlName="groupId">
+            <option value="">Selecione um grupo...</option>
+            <option *ngFor="let g of groups" [value]="g.id">
+              {{ g.name }}
+            </option>
+          </select>
         </div>
 
         <div class="col-md-6">

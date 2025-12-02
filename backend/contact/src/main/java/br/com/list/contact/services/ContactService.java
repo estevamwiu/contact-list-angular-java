@@ -7,33 +7,27 @@ import org.springframework.stereotype.Service;
 
 import br.com.list.contact.entities.Contact;
 import br.com.list.contact.repositories.ContactRepository;
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class ContactService {
 
     @Autowired
-        private ContactRepository repository;
+    private ContactRepository repository;
 
-    public List<Contact> getContacts() {
+    public Contact save(Contact contact) {
+        return repository.save(contact);
+    }
+
+    public Contact getById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Contato não encontrado"));
+    }
+
+    public List<Contact> list() {
         return repository.findAll();
     }
 
-    public Contact getContactById (long id) {
-        return repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Contato não encontrado."));
-    }
-
-    public void deleteContactById (long id) {
-        if (repository.existsById(id)) {
-            repository.deleteById(id);
-        }
-
-        else {
-            throw new EntityNotFoundException("Contato não existente.");
-        }
-    }
-
-    public Contact saveContact (Contact contact) {
-        return repository.save(contact);
+    public void delete(Long id) {
+        repository.deleteById(id);
     }
 }

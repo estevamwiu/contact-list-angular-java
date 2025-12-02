@@ -9,11 +9,12 @@ import { NewGroupsComponent } from './new-groups-component/new-groups-component'
 const routes: Routes = [
   {path : '', redirectTo: 'home', pathMatch: 'full'},
   {path : 'home', component: HomeComponent},
-  { path: 'new-contact', component: NewContactComponent },
+  {path: 'new-contact', component: NewContactComponent },
   {path : 'edit-contact/:id', component: NewContactComponent},
   {path : 'contact', component: ContactComponent},
   {path : 'groups', component: GroupsComponent},
-  {path : 'new-groups', component: NewGroupsComponent}
+  {path: 'new-group', component: NewGroupsComponent },
+  {path : 'edit-groups/:id', component: NewGroupsComponent}
 ];
 
 @NgModule({
