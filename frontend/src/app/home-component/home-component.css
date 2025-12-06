@@ -1,8 +1,20 @@
 .card {
-  border-radius: 15px;
-  transition: transform .2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card i {
+  opacity: 0.9;
+}
+
+.card i:hover {
+  opacity: 1;
+}
+
+.button {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }

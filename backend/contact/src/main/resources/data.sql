@@ -3,6 +3,8 @@ INSERT INTO TBL_GROUPS (id, name, description) VALUES
 (2, 'Grupo 2', 'Descrição do grupo 2'),
 (3, 'Grupo 3', 'Descrição do grupo 3'),
 (4, 'Grupo 4', 'Descrição do grupo 4');
+(5, 'Grupo 5', 'Descrição do grupo 5');
+
 
 INSERT INTO TBL_CONTACTS (ADDRESS, EMAIL, NAME, NOTES, PHONE, group_id) VALUES
 ('Rua 1', 'f9Ej8@example.com', 'Joao', 'Notas 1', '1234', 1),
