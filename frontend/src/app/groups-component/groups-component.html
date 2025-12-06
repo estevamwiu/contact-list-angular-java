@@ -18,13 +18,14 @@
         type="text"
         class="form-control enhance"
         placeholder="Pesquisar grupo..."
-        disabled
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
       />
     </div>
   </div>
 
   <div class="row g-4">
-    <div class="col-md-4 col-sm-6" *ngFor="let group of groups">
+    <div class="col-md-4 col-sm-6" *ngFor="let group of filteredGroups">
       <div class="group-card p-3 rounded-4 shadow-sm">
         
         <div class="d-flex align-items-center mb-3">

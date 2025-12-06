@@ -30,7 +30,6 @@ export class NewContactComponent {
     this.initForm();
     this.loadGroups();
 
-    // editar
     this.route.params.subscribe(params => {
       if (params['id']) {
         this.editingId = params['id'];

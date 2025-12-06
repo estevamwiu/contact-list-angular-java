@@ -12,6 +12,7 @@ import { GroupService } from '../services/group.service';
 export class GroupsComponent implements OnInit {
 
   groups: Group[] = [];
+  
 
   constructor(
     private groupService: GroupService,
@@ -48,4 +49,16 @@ export class GroupsComponent implements OnInit {
       error: () => alert('Erro ao remover grupo.')
     });
   }
+
+  searchTerm: string = '';
+
+get filteredGroups() {
+  return this.groups.filter(g =>
+    g.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+  );
+}
+onSearchChange(): void {
+
+}
+
 }

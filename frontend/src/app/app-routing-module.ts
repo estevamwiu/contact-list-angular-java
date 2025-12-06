@@ -11,7 +11,7 @@ const routes: Routes = [
   {path : 'home', component: HomeComponent},
   {path: 'new-contact', component: NewContactComponent },
   {path : 'edit-contact/:id', component: NewContactComponent},
-  {path : 'contact', component: ContactComponent},
+  {path : 'contacts', component: ContactComponent},
   {path : 'groups', component: GroupsComponent},
   {path: 'new-group', component: NewGroupsComponent },
   {path : 'edit-groups/:id', component: NewGroupsComponent}
